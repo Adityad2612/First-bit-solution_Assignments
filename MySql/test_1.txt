@@ -1,0 +1,34 @@
+Name - Aditya Durgude
+Batch - 8th Aug java
+Roll No - 15J0825/019
+
+Q1) select names from customers order by names;
+
+Q2) select * from products order by expensive limit 10;
+
+Q4) select customer,count(*) from customers group by 'city';
+
+Q5) select salary,count(*) from Employees group by department where count(*) > 200000;
+
+Q6) select Phone_number,customerName from Customers where phone_number like (%7899),
+    customerName like ("abc%");
+
+Q7) select * from products where product_name like "pro%";
+
+Q8) select students,count(*) from Students group by course where count(*) >= 30;
+
+Q9) select count(*) from orders group by months;
+
+Q10) select max(salary),min(salary) from Employees group by departments;
+
+Q11) d
+Q12) a
+Q13) a
+Q14) d
+Q15) b
+
+Q16) select customer_id,customr_name,avg(total_amount) from Orders o inner join Customers c 
+     on o.customer_id = c.customer.id where customer_id > 2;
+
+Q17) select product_id,product_name, count(sales) from products p inner join Sales s 
+     on p.product_id = s.product_id where count(sales) > 50;
