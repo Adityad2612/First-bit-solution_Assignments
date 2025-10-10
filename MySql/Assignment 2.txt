@@ -1,0 +1,240 @@
+1) Create the table Member, Books and Issue without any constraints as
+mentioned in the schema description above.
+
+---> create table member
+    -> (member_id int primary key,member_name varchar(30),
+    -> membership_type varchar(20),fees_paid int,
+    -> max_books_allowed int,penalty_amount decimal(7,2));
+
+    ->create table books
+    -> (book_no int,book_name varchar(30),
+    -> author_name varchar(30),cost decimal(7,2),
+    -> category char(10));
+
+    -> create table issue
+    -> (lib_issue_id int,book_no int,
+    -> member_id int,issue_date date,
+    -> return_date date);
+
+
+2) View the structure of the tables.
+
+--->desc member;
+    ->desc books;
+    ->desc issue;
+
+3) Drop the Member table
+
+--->alter table member
+    -> drop primary key;
+    -> drop table member;
+
+
+4)Create the table Member again as per the schema description with the
+following constraints.
+a. Member_Id – Primary Key
+b. Membership_type - ‘Lifetime’,’ Annual’, ‘Half Yearly’,’ Quarterly’
+
+---> create table member
+    -> (member_id int primary key,mamber_name varchar(30) NOT NULL,
+    -> member_address varchar(50),acc_open_date date,
+    -> membership_type enum ('Lifetime','Annual','Half Yearly','Quaterly'),
+    -> fees_paid int,max_books_allowed int,penalty_amount decimal(7,2));
+
+5) Modify the table Member increase the width of the member name to 30
+characters.
+
+---> alter table member
+    -> modify column member_name varchar(30);
+
+6) Add a column named as Reference of Char(30) to Issue table.
+
+--->alter table issue
+    -> add column Refrences char(30);
+
+
+7) Delete/Drop the column Reference from Issue.
+
+---> alter table issue
+    -> drop Refrences;
+
+8) Rename the table Issue to Lib_Issue.
+
+--->alter table issue rename to Lib_Issue;
+
+9) Insert following data in table Member
+
+--->insert into member values(1,"Richa Sharma","Pune","10-12-05","Lifetime",25000,5,50),
+(2,"Garima Sen","Pune","25-10-06","Annual",1000,3,NULL);
+
+10)Insert at least 5 records with suitable data.
+
+--->insert into member values(3, 'Amit Verma', 'Mumbai', '2007-05-15', 'Half Yearly', 1500, 4, 20),
+    -> (4, 'Sneha Patil', 'Nashik', '2008-03-12', 'Quaterly', 600, 2, 5),
+    -> (5, 'Rahul Desai', 'Nagpur', '2009-07-22', 'Lifetime', 28000, 5, 40);
+    -> (6, 'Neha Kulkarni', 'Aurangabad', '2010-02-11', 'Half Yearly', 1800, 4, 15),
+    -> (7, 'Soham Joshi', 'Thane', '2011-08-29', 'Quaterly', 750, 3, 8);
+
+11) Modify the column Member_name. Decrease the width of the member
+name to 20 characters. (If it does not allow state the reason for that)
+
+--->alter table member
+    -> modify member_name varchar(20);
+
+12)Generate another table named Member101 using a Create command
+along with a simple SQL query on member table.
+
+---> create table Member101(
+    -> Member_id int primary key,member_name varchar(30),
+    -> member_address varchar(50),acc_open_date date,
+    -> membership_type varchar(20),fees_paid int,
+    -> mex_books_allowed int,penalty_amount decimal(7,2));
+
+13) Generate another table named Member101 using a Create command
+
+---> create table member101 as
+    -> select * from member;
+
+14) Add the constraints on columns max_books_allowed and penalty_amt
+as follows
+a. max_books_allowed < 100
+b. penalty_amt maximum 1000
+Also give names to the constraints.
+
+---> alter table member
+    -> add constraint chk_max_books_allowed check (max_books_allowed < 100),
+    -> add constraint chk_penalty_amt check (penalty_amount <= 1000);
+
+15) Drop the table books.
+
+---> drop table books;
+
+16) Create table Books again as per the schema description with the
+following constraints.
+a. Book_No – Primary Key
+b. Book_Name – Not Null
+c. Category – System, Fiction, Database, RDBMS, Others.
+
+---> create table Books
+    -> (Book_No int primary key,Book_Name varchar(30) NOT NULL,
+    -> category enum('System','Fiction','Database','RDMS','Others'));
+
+17) Insert data in Book table as follows:
+
+---> insert into Books values(101,"Let Us C","Denis Ritchie",450,"System"),
+    -> (102,"Oracle - Complete Ref","Loni",550,"Database"),
+    -> (103,"Mastering SQL","Loni",250,"Database"),
+    -> (104,"PL SQL-Ref","Scott Uraman",750,"Database");
+
+18) Insert more records in Book table.
+
+---> insert into books values(3, 'Harry Potter', 'J.K. Rowling', 400, 'Fiction'),
+    -> (4, 'Operating Systems', 'Silberschatz', 700, 'System'),
+    -> (5, 'Relational DBMS', 'Elmasri', 650, 'RDMS'),
+    -> (6, 'Algorithms', 'CLRS', 800, 'System');
+
+19) View the data in the tables using simple SQL query.
+
+--->select * from Books;
+
+20) Insert into Book following data.
+
+105, National Geographic, Adis Scott, 1000, Science
+
+---> insert into Books (Book_No,Book_Name,Author,Cost,category)
+    -> values(109,"National Geography","Adis Scott",1000,"Others");
+
+21) Rename the table Lib_Issue to Issue.
+
+---> alter table Lib_Issue
+    -> rename to Issue;
+
+22) Drop table Issue.
+
+--->drop table Issue;
+
+23) As per the given structure Create table Issue again with following
+constraints.
+
+ Lib_Issue_Id-Primary key
+ Book_No- foreign key
+ Member_id - foreign key
+ Issue_date
+ Return_date
+
+---> create table Issue
+    -> (Lib_Issue_Id int primary key,Book_No int NOT NULL,
+    -> member_id int NOT NULL,Issue_date date,
+    -> Return_date date,
+    -> foreign key(Book_No) references Books(Book_No),
+    -> foreign key(member_id) references member(member_id));
+
+24) Insert following data into Issue table.
+
+---> insert into Issue(Book_No,member_id,Issue_date)
+    -> values(101,1,"06-12-10"),(102,1,"06-12-25"),(104,1,"06-01-15"),
+    -> (101,1,"06-07-04"),(104,2,"06-11-15"),(101,3,"06-02-18");
+
+25) Remove the constraints on Issue table
+
+---> alter table Issue
+    -> drop primary key;
+    -> drop constraint issue_ibfk_1,
+    -> drop constraint issue_ibfk_2;
+
+26) Insert a record in Issue table. The member_id should not exist in
+member table.
+
+--->insert into Issue values(8001,101,999,'24-12-01',null);
+    
+
+ 27) Now enable the constraints of Issue table. Observe the error
+
+--->->alter table Issue
+    ->add constraint foreign key(book_no) refrences books(book_no);
+    ->add constraint foreign key(member_id) refrences member(member_id);
+
+    
+28) Delete the record inserted at Q-27) and enable the constraints.
+
+--->delete from Issue
+    -> where Lib_Issue_id = 8001;
+    ->alter table Issue
+    ->add constraint fk_issue_member foreign key(member_id) refrences member(member_id);
+
+29) Try to delete the record of member id 1 from member table and observe the error 
+
+--->delete from member
+    ->where member_id = 1;
+
+30) View the data and structure of all the three tables Member, Issue, Book.
+
+--->select * from member;
+    ->select * from Issue;
+    ->select * from books;
+
+31) Modify the Return_Date of 7004,7005 to 15 days after the Issue_date.
+
+--->update Issue
+    ->set return_date = date_add(issue_date, interval 15 day)
+    ->where Lib_Issue_id in (7004,7005);
+
+32) Remove all the records from Issue table where member_ID is 1 and Issue date in before 10-Dec-06
+
+--->delete from Issue
+    ->where member_id = 1
+    -> and issue_date < '06-12-10';
+
+33) Remove all the records from Book table with category other than RDBMS and Database.
+
+--->delete from books where category not in("RDMS","Database");
+
+34) Remove the table Member.
+ 
+--->drop table member;
+
+35)Remove the table Book.
+
+--->remove table Book;
+
+

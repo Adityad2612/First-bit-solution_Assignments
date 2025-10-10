@@ -1,0 +1,71 @@
+1. Write a SQL statement to insert a record as follows:
+Employees :
+
+---> create table employee
+    -> (employee_id int primary key,first_name varchar(20) not null,
+    -> last_name varchar(20) not null,email varchar(20) unique,
+    -> phone_number varchar(20) unique,hire_date date,job_id varchar(20),
+    -> salary decimal(7,2),commission_pct double(2,2),
+    -> manager_id int,department_id int); 
+
+    insert into employee values
+    -> (100, 'Steven', 'King', 'SKING', '515.123.4567', '1987-06-17', 'AD_PRES', 24000.00, 0.00, 200, 10),
+    -> (101, 'Neena', 'Kochhar', 'NKOCHHAR', '515.123.4568', '1987-06-18', 'AD_VP', 17000.00, 0.00, 200, 10),
+    -> (102, 'Lex', 'De Haan', 'LDEHAAN', '515.123.4569', '1987-06-19', 'AD_VP', 17000.00, 0.00, 200, 10),
+    -> (103, 'Alexander', 'Hunold', 'AHUNOLD', '590.423.4567', '1987-06-20', 'IT_PROG', 9000.00, 0.00, 103, 60),
+    -> (104, 'Bruce', 'Ernst', 'BERNST', '590.423.4568', '1987-06-21', 'IT_PROG', 6000.00, 0.00, 103, 60),
+    -> (105, 'David', 'Austin', 'DAUSTIN', '590.423.4569', '1987-06-22', 'IT_PROG', 4800.00, 0.00, 103, 60),
+    -> (106, 'Valli', 'Pataballa', 'VPATABAL', '590.423.4560', '1987-06-23', 'IT_PROG', 4800.00, 0.00, 103, 60),
+    -> (107, 'Diana', 'Lorentz', 'DLORENTZ', '590.423.5567', '1987-06-24', 'IT_PROG', 4200.00, 0.00, 114, 30),
+    -> (108, 'Nancy', 'Greenberg', 'NGREENBE', '515.124.4569', '1987-06-25', 'SA_MAN', 12000.00, 0.00, 145, 80),
+    -> (109, 'Daniel', 'Faviet', 'DFAVIET', '515.124.4169', '1987-06-26', 'SA_MAN', 9000.00, 0.00, 145, 80);
+
+   create table department
+    -> (department_id int primary key,department_name varchar(20),
+    -> manager_id int,location_id int);
+    
+     insert into department values
+    -> (10,"Administration",200,1700),
+    -> (20,"Marketing",201,1800),
+    -> (30,"Purchasing",114,1700),
+    -> (40,"Human Resources",203,2400),
+    -> (50,"Shipping",121,1500),
+    -> (60,"IT",103,1400),
+    -> (70,"Public Relation",204,2700),
+    -> (80,"Sales",145,2500);
+
+Q2. Write a SQL statement to insert 3 rows by a single insert statement.
+
+--->insert into jobs values
+    -> ('AD_ASST', 'Administration Assistant', 3000, 6000),
+    -> ('FI_MGR', 'Finance Manager', 8200, 16000),
+    -> ('FI_ACCOUNT', 'Accountant', 4200, 9000);
+
+Q3. Write a SQL statement to insert one row in jobs table to ensure that no duplicate
+
+---> insert into jobs values
+    -> ('PU_CLERK','Purchasing Clerk',2500,5500);
+
+Q4. Write SQL statement to increment salary of each emp by 10%.
+
+---> update employee set salary = salary*1.10;
+
+Q5. Write a SQL statement to change the email column of employees table with 'not
+available' for those employees whose department_id is 80 and gets a
+commission is less than .20%
+
+--->update employees set email = 'not available'
+    -> where department_id = 80 and commission_pct < 0.20;
+
+Q6. Write a SQL statement to change the email column of employees table with 'not
+available' for those employees who belongs to the 'Purchasing' department.
+
+--->update employees
+    -> set email = 'not available'
+    -> where (select department_id from department where department_name = 'Purchasing');
+
+Q7. Write a SQL statement to change the email and commission_pct column of
+employees table with 'not available' and 0.10 for all employees.
+
+---> update employee set email = 'not available',
+    -> commission_pct = 0.10;
