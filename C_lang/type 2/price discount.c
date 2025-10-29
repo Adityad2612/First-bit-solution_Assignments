@@ -1,0 +1,51 @@
+#include<stdio.h>
+
+int discount();
+void main()
+{
+	int r;
+	r =discount();
+	printf("discount is%d\n",r);
+	if(r==0)
+	printf("There is no discount");
+}
+int discount()
+{
+	int price;
+	int discount;
+	char student = '1';
+	
+	
+	printf("Enter price\n");
+	scanf("%d", &price);
+	
+	fflush(stdin);
+	
+	printf("Enter whether you are student or not\n");
+	scanf("%c", &student);
+	if(student == '1')
+	{
+		if(price > 500)
+		{
+			discount = price*0.2;
+			return discount;
+		}
+		else
+		{
+			discount = price *0.1;
+			return discount;
+		}
+	}
+	else
+	{
+			if(price > 600)
+			{
+				discount = price*0.15;
+				return discount;
+			}
+			else
+			{
+				return 0;
+			}
+	}
+}
