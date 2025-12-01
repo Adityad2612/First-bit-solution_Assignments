@@ -13,7 +13,7 @@ Click any project from the list below to view full documentation.
 🔗 **Banking Management System (Java – Core)**  
 ➡ [Open Project README](./readme1_java.md)
 
-🔗 **Airline Reservation Database (MySQL)**
+🔗 **Airline Reservation Database (MySQL)**  
 ➡ [Open Project README](./readme_mysql.md)
 
 
