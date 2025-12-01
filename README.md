@@ -8,9 +8,9 @@ Click any project from the list below to view full documentation.
 ## 📌 Available Projects
 
 🔗 **Book Management System (C Programming)**  
-➡ [Open Project README](./readme_c.md)
+➡ [Open Project README](./readme1_c.md)
 
-🔗 **Banking Management System (Java – Core & Arrays)**  
+🔗 **Banking Management System (Java – Core)**  
 ➡ [Open Project README](./redeme1_java.md)
 
 ---
