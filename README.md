@@ -1,7 +1,7 @@
-# 📚 Book Management System – C Programming (Console Application)
+# 🏦 FirstBit Bank – Console-Based Banking Management System (Java)
 
-This project is a **menu-driven console based Book Management System** written in **C language using Structure and Arrays**.  
-It allows users to manage books with operations like adding, removing, searching, updating, and sorting.
+This project is a **menu-driven console banking system** written in **Core Java (No SQL / No Collections)** using **Arrays, OOP & MVC Architecture**.  
+It supports multiple account types and complete banking operations including loans, transactions & statements.
 
 ---
 
@@ -9,126 +9,126 @@ It allows users to manage books with operations like adding, removing, searching
 
 | Feature | Description |
 |--------|-------------|
-| Display Books | Shows database in table format |
-| Add Book | Add one or multiple new books |
-| Remove Book | Remove book by ID or Name |
-| Search Book | Search by ID, Name or Author |
-| Show Books | Filter by Author or Category |
-| Update Book | Update price, rating or discount |
-| Sort Books | Sort by Price, Rating or Discount |
-| Exit | Quit the program safely |
+| Open Account | Saving / Current / Salary / Loan |
+| Deposit Money | Supported for all except Loan withdrawal |
+| Withdraw Money | Based on rules & limits per account type |
+| Check Balance | Show available balance |
+| Account Details | Full information of the account |
+| Loan Services | EMI payment, Auto close on full repayment |
+| Statement | Shows all deposits, withdrawals, interest & loan payments |
+| Freeze Logic | Salary accounts freeze after 60 days inactivity |
+| Interest | Applied to Saving, Current (overdraft interest), and Loan |
 
 ---
 
-## 🧾 Book Attributes
+## 💡 Account Types & Rules
 
-Each book contains the following information:
-
-| Field | Type |
-|------|------|
-| Book ID | int |
-| Name | char[40] |
-| Author Name | char[30] |
-| Category | char[20] |
-| Price | int |
-| Rating | double |
-| Discount | double |
+### 1️⃣ Saving Account
+| Parameter | Rule |
+|----------|------|
+| Minimum Balance | Cannot go below min balance |
+| Withdrawal Limit | Max amount allowed per transaction |
+| Daily Limit | Max total withdrawal allowed per day |
+| Interest | Monthly savings interest |
 
 ---
 
-## 📌 Project Architecture
+### 2️⃣ Current Account
+| Feature | Details |
+|--------|---------|
+| Overdraft | Withdrawal beyond balance allowed |
+| OD Interest | Interest applied when balance is negative |
+| Business Details | GST No. & Business Name stored |
 
-Main()
-└── store() → Loads initial 6 books
-└── display() → Show all books
-└── addbook() → Add new books
-└── removebooks() → Remove book by ID or Name
-└── searchbook() → Search by ID / Name / Author
-└── showbook() → Filter by Author / Category
-└── updatebook() → Update price / rating / discount
-└── sortbook() → Sort (price / rating / discount)
-└── swapping() → swap helper function
+---
+
+### 3️⃣ Salary Account
+| Feature | Details |
+|---------|---------|
+| Monthly Salary | Credited using `creditSalary()` |
+| Freeze Condition | Frozen if **no transaction for 60+ days** |
+| Transaction Rules | No operation allowed when frozen except salary credit |
+| Auto Unfreeze | When salary is credited |
+
+---
+
+### 4️⃣ Loan Account
+| Feature | Details |
+|--------|----------|
+| Loan Amount | Given at account creation |
+| EMI Payment | Handled through deposits |
+| Interest | Applied monthly on outstanding |
+| Loan Closure | Auto-closed when outstanding becomes zero |
+| No Withdrawal | Not permitted |
+
+---
+
+## 🧱 Project Architecture (MVC)
+
+┌──────────────────┐
+│ BankView │ → Handles input/output (UI/menus)
+└──────────────────┘
+↓
+┌──────────────────┐
+│ BankController │ → Coordinates logic between View & Model
+└──────────────────┘
+↓
+┌──────────────────┐
+│ Bank │ → Holds array of BankAccount and main business logic
+└──────────────────┘
+↓
+┌────────────────────────────────────────────┐
+│ BankAccount (abstract) │
+├────────────────────────────────────────────┤
+│ SavingAccount │ CurrentAccount │ SalaryAccount │ LoanAccount │
+└────────────────────────────────────────────┘
 ---
 
 ## ▶️ How to Run
 
-1. Open in **VS Code / Turbo C / Dev-C++ / CodeBlocks**
-2. Compile using:
-gcc project.c -o project
-3. Run the program:
+1. Open project in **VS Code / IntelliJ / Eclipse**
+2. Ensure **Java (JDK 8 or above)** is installed
+3. Save all files inside **same package `bank`**
+4. Run the **main class:**
 
 ---
 
-## 📂 Functional Overview
+## 📌 Tech Stack Used
 
-| Function | Purpose |
-|----------|---------|
-| store() | Loads pre-defined books |
-| display() | Prints books in table format |
-| addbook() | Add new record(s) |
-| removebooks() | Delete book by ID or Name |
-| searchbook() | Find book by ID, Name or Author |
-| showbook() | Display based on Author or Category |
-| updatebook() | Modify price / rating / discount |
-| sortbook() | Sort in ascending / descending |
-| swapping() | Helper function to swap elements |
+| Technology | Usage |
+|-----------|-------|
+| Java | Core programming |
+| OOP Concepts | Inheritance, Abstraction, Polymorphism |
+| Arrays | Storage of accounts & transactions |
+| MVC | Layer separation |
+| Date / Time API | Managing deadlines and inactivity |
 
 ---
 
-## 🧪 Sample Menu
+## 📝 Sample Output (Welcome Screen)
 
-===== Book Management System =====
+==============================================
+WELCOME TO FIRSTBIT BANK
+GROW IT BIT BY BIT
+---
 
-1.Display books
+## 📂 File Contains
 
-2.Add a new book
-
-3.Remove a book
-
-4.Search for a book
-
-5.Show books by author or category
-
-6.Update book price, rating, or discount
-
-7.Sort books by price, rating or discount
-
-8.Exit
-Enter your choice:
+✔ Complete working console system  
+✔ No SQL / No Collections — only **Arrays**  
+✔ Beginner-friendly logic  
 
 ---
 
-## 🛠 Tech Stack Used
+## 🤝 Credits
 
-| Technology | Purpose |
-|-----------|---------|
-| C Language | Main program |
-| Structures | Book details object model |
-| Arrays | Storage of book records |
-| File Handling | ❌ Not used in this version |
-| Dynamic Memory | malloc / realloc used |
+This project is designed for **learning core Java**, especially:
+- Abstraction & inheritance
+- Real-life banking rules
+- Arrays & transaction storage
+- Console-based application design
 
 ---
 
-## 🚀 Scope for Future Enhancements
-
-🔸 File handling to store book data permanently  
-🔸 Export report to CSV / PDF  
-🔸 GUI using GTK or C++ Qt  
-🔸 Web + database integration (PHP + MySQL)
-
----
-
-## 📌 About the Project
-
-This program is designed to give hands-on experience in:
-- Structure & Array concepts
-- Searching & Sorting algorithms
-- Dynamic memory allocation
-- Real-world CRUD application logic
-- Modular programming in C
-
----
-
-🔹 *Feel free to improve and extend this project.*
+🔹 *Feel free to extend this project with GUI, database, or REST in future.*
 
