@@ -13,21 +13,17 @@ Click any project from the list below to view full documentation.
 🔗 **Banking Management System (Java – Core)**  
 ➡ [Open Project README](./readme1_java.md)
 
+🔗 Airline Reservation Database (MySQL)
+➡ [Open Project README](./readme_mysql.md)
+
+
 ---
 
 ## 📝 About
-This repository contains academic + practical projects developed while learning C and Java.
+This repository contains academic + practical projects developed while learning C , Java , MySql.
 Each project includes complete code and documentation for better understanding.
 
 ---
 
-## 💡 Upcoming Projects (Optional)
-You can add more here later:
-
-- ATM Simulation (Java)
-- Student Result Management (C)
-- Movie Ticket Booking (Java)
-
----
 
 📌 *Click any project above to explore source code and documentation.*
